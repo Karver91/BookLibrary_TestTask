@@ -5,18 +5,18 @@
 ```
 BookLibrary_TestTask/
     ├── controllers/
-        ├── command_processor.py # Принимает команды, вызывает контроллеры
-        └── library_controller.py # Контроллеры библиотеки
-    ├── data/ # Хранит файлы данных
+        ├── command_processor.py      # Принимает команды, вызывает контроллеры
+        └── library_controller.py     # Контроллеры библиотеки
+    ├── data/                         # Хранит файлы данных
     ├── data_managment/
-        └── file_manager.py # Отвечает за методы работы с файлами данных
+        └── file_manager.py           # Отвечает за методы работы с файлами данных
     ├── models/
-        └── library_models.py # Отвечает за модели библиотеки и их валидацию
+        └── library_models.py         # Отвечает за модели библиотеки и их валидацию
     ├── services/
-        └── library_service.py # Службы библиотеки. Отвечают за обработку бизнес-логики
+        └── library_service.py        # Службы библиотеки. Отвечают за обработку бизнес-логики
     ├── tests/
     ├── views/
-        └── console_view.py # Отвечает за шаблоны отображаемой пользователю информации
+        └── console_view.py           # Отвечает за шаблоны отображаемой пользователю информации
     ├── config.py
     ├── enums.py
     ├── log.log
