@@ -45,10 +45,12 @@ class BaseService:
 
 
 class BookService(BaseService):
+    """Отвечает за обработку бизнес-логики, связанной с моделью Book"""
     def __init__(self, file_manager: BaseFileManager):
         super().__init__(file_manager)
         
-    def add_book(self, title: str, author: str, year: str) -> Book | None:
+    def add_book(self, title: str, author: str, year: str) -> Book:
+        """Добавить книгу"""
         try:
             book_id = self.file_manager.generate_id()
             new_book = Book(book_id, title, author, year)
@@ -57,7 +59,8 @@ class BookService(BaseService):
         except ValueError:
             raise
 
-    def remove_book(self, book_id):
+    def remove_book(self, book_id: str) -> Book:
+        """Удалить книгу"""
         try:
             book = self.get_obj_by_id(book_id)
             if not book in self.file_manager.data:
@@ -73,7 +76,8 @@ class BookService(BaseService):
         books = [book for book in self.file_manager.data if user_input in (book.title, book.author, book.year)]
         return books
 
-    def change_book_status(self, book: Book):
+    def change_book_status(self, book: Book) -> Book:
+        """Меняет статус книги, на выбранный пользователем"""
         try:
             commands = self.get_status_commands()
             console.print_command_info(commands)
@@ -84,7 +88,8 @@ class BookService(BaseService):
         except ValueError:
             raise
 
-    def get_status_commands(self):
+    def get_status_commands(self) -> dict[dict]:
+        """Возвращает список команд для изменения статуса книги"""
         book_statuses = self.get_all_enum_statuses(BookStatusEnum)
         status_values = [x[1].value for x in book_statuses]
         commands = {str(key): {'description': value} for key, value in enumerate(status_values, start=1)}

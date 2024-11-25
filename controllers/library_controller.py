@@ -6,10 +6,12 @@ from views.console_view import console
 
 
 class BookController:
+    """Обрабатывает команды, связанные с книгами"""
     def __init__(self, service: BookService):
         self.service = service
 
     def add_book(self) -> None:
+        """Добавить книгу"""
         try:
             console.print_add_book_info()
             title, author, year = [
@@ -25,7 +27,8 @@ class BookController:
             console.print_exception_message(e)
             logger.log_exception(traceback.format_exc())
 
-    def remove_book(self):
+    def remove_book(self) -> None:
+        """Удалить книгу"""
         try:
             console.print_remove_book_info()
             book_id = console.user_input()
@@ -37,15 +40,18 @@ class BookController:
 
 
     def search_book(self) -> None:
+        """Ищет книги по их названию, автору или году издания"""
         console.print_search_book_info()
         user_input = console.user_input()
         result = self.service.search_book(user_input)
         console.print_books(result)
 
-    def print_all_books(self):
+    def print_all_books(self) -> None:
+        """Выводит все доступные книги на экран"""
         console.print_books(self.service.file_manager.data)
 
-    def change_book_status(self):
+    def change_book_status(self) -> None:
+        """Изменить статус книги"""
         try:
             console.print_change_book_status_info()
             book_id = console.user_input()
