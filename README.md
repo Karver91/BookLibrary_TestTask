@@ -2,6 +2,7 @@
 
 ## Структура проекта
 
+\```
 **BookLibrary_TestTask/**
     ├── **controllers/**
         ├── **command_processor.py** - Принимает команды, вызывает контроллеры
@@ -21,6 +22,7 @@
     ├── **log.log**
     ├── **logger.py**
     └── **main.py**
+\```
 
 ## Тестовое задание
 
